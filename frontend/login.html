@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login / Register | alterED</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="images/test 2.jpg"
+                alt="alterED Logo"
+                class="brand-logo"
+            >
+
+            <span class="brand-name">
+                alter<span>ED</span>
+            </span>
+
+        </a>
+
+
+        <nav class="nav-menu">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="photo.html">
+                Photo
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <a
+            href="login.html"
+            class="auth-nav-button active-auth"
+        >
+
+            <span class="user-icon">
+                ♟
+            </span>
+
+            <span>
+                Login / Register
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-button"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+
+    <!-- ================= AUTH SECTION ================= -->
+
+    <main class="auth-page">
+
+
+        <div class="auth-background-glow glow-auth-one"></div>
+
+        <div class="auth-background-glow glow-auth-two"></div>
+
+
+        <section class="auth-container">
+
+
+            <!-- ================= LOGIN ================= -->
+
+            <div class="auth-column">
+
+                <div class="auth-heading">
+
+                    <h1>
+                        Welcome Back
+                    </h1>
+
+                    <p>
+                        Login to your alterED account
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+
+                    <div class="auth-input">
+
+                        <span>✉</span>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Email Address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>🔐</span>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>♟</span>
+
+                        <select
+                            id="loginRole"
+                            required
+                        >
+
+                            <option value="">
+                                Select Role
+                            </option>
+
+                            <option value="student">
+                                Student
+                            </option>
+
+                            <option value="faculty">
+                                Faculty
+                            </option>
+
+                            <option value="admin">
+                                Admin
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                    >
+                        Login
+                    </button>
+
+
+                    <p
+                        id="loginMessage"
+                        class="form-message"
+                    ></p>
+
+
+                    <a
+                        href="#"
+                        class="forgot-password"
+                    >
+                        Forgot Password?
+                    </a>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- VERTICAL DIVIDER -->
+
+            <div class="auth-divider"></div>
+
+
+
+            <!-- ================= REGISTER ================= -->
+
+            <div class="auth-column">
+
+                <div class="auth-heading">
+
+                    <h1>
+                        Create Account
+                    </h1>
+
+                    <p>
+                        Join alterED
+                    </p>
+
+                </div>
+
+
+                <form id="registerForm">
+
+
+                    <div class="auth-input">
+
+                        <span>♙</span>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Full Name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>✉</span>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Email Address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>♟</span>
+
+                        <select
+                            id="registerRole"
+                            required
+                        >
+
+                            <option value="">
+                                Select Role
+                            </option>
+
+                            <option value="student">
+                                Student
+                            </option>
+
+                            <option value="faculty">
+                                Faculty
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>🔐</span>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="auth-input">
+
+                        <span>🔒</span>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm Password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="auth-submit"
+                    >
+                        Register
+                    </button>
+
+
+                    <p
+                        id="registerMessage"
+                        class="form-message"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
