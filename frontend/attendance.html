@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alterED | Attendance</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="home.html" class="brand">
+        <img src="images/test 2.jpg" class="brand-logo" alt="alterED Logo">
+        <div class="brand-name">alter<span>ED</span></div>
+    </a>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="home.html">Home</a>
+        <a href="timetable.html">Timetable</a>
+        <a href="attendance.html" class="active">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+
+    <a href="login.html" class="auth-nav-button">
+        <span class="user-icon">◉</span>
+        Logout
+    </a>
+
+    <button class="menu-button" id="menuButton" type="button">☰</button>
+
+</header>
+
+
+<main class="simple-page">
+
+    <div class="hero-small-title">
+        STUDENT RECORD
+    </div>
+
+    <h1 class="simple-title">
+        My <span>Attendance</span>
+    </h1>
+
+    <p class="simple-description">
+        This section displays the attendance information
+        of the currently logged-in student.
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h2>Overall Attendance</h2>
+
+            <p>
+                <strong style="font-size:40px;color:#d946ef;">
+                    86%
+                </strong>
+            </p>
+
+            <p>
+                Current overall attendance
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>Attendance Summary</h2>
+
+            <p>
+                Present: <strong>18</strong><br><br>
+                Absent: <strong>4</strong><br><br>
+                Total Lectures: <strong>22</strong>
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>Data Structures</h2>
+
+            <p>
+                Present: 5<br>
+                Absent: 1<br>
+                Attendance: 83%
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>SQL</h2>
+
+            <p>
+                Present: 6<br>
+                Absent: 1<br>
+                Attendance: 86%
+            </p>
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const navMenu = document.getElementById("navMenu");
+
+    menuButton.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+</script>
+
+</body>
+</html>

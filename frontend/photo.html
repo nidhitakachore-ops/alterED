@@ -1,109 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Photo | alterED</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alterED | Photos</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 
 <body>
 
-    <header class="navbar">
+<header class="navbar">
 
-        <a href="index.html" class="brand">
+    <a href="home.html" class="brand">
+        <img src="images/test 2.jpg" class="brand-logo" alt="alterED Logo">
+        <div class="brand-name">alter<span>ED</span></div>
+    </a>
 
-            <img
-                src="images/test 2.jpg"
-                alt="alterED Logo"
-                class="brand-logo"
-            >
+    <nav class="nav-menu" id="navMenu">
+        <a href="home.html">Home</a>
+        <a href="timetable.html">Timetable</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+    </nav>
 
-            <span class="brand-name">
-                alter<span>ED</span>
-            </span>
+    <a href="login.html" class="auth-nav-button">
+        <span class="user-icon">◉</span>
+        Logout
+    </a>
 
-        </a>
+    <button class="menu-button" id="menuButton" type="button">☰</button>
 
-
-        <nav class="nav-menu">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="photo.html" class="active">
-                Photo
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
+</header>
 
 
-        <a
-            href="login.html"
-            class="auth-nav-button"
+<main class="simple-page">
+
+    <div class="hero-small-title">
+        ALTERED GALLERY
+    </div>
+
+    <h1 class="simple-title">
+        Campus <span>Photos</span>
+    </h1>
+
+    <p class="simple-description">
+        A visual section for the alterED education platform.
+    </p>
+
+
+    <div class="photo-container">
+
+        <img
+            src="images/test 2.jpg"
+            class="main-photo"
+            alt="alterED"
         >
-            <span class="user-icon">♟</span>
-            <span>Login / Register</span>
-        </a>
+
+    </div>
+
+</main>
 
 
-        <button
-            class="menu-button"
-            onclick="toggleMenu()"
-        >
-            ☰
-        </button>
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const navMenu = document.getElementById("navMenu");
 
-    </header>
-
-
-    <main class="simple-page">
-
-        <p class="hero-small-title">
-            ALTERED GALLERY
-        </p>
-
-        <h1 class="simple-title">
-            Our <span>Vision</span>
-        </h1>
-
-        <div class="neon-line"></div>
-
-
-        <div class="photo-container">
-
-            <img
-                src="images/test 2.jpg"
-                alt="alterED"
-                class="main-photo"
-            >
-
-        </div>
-
-    </main>
-
-
-    <script src="js/script.js"></script>
+    menuButton.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+</script>
 
 </body>
-
 </html>

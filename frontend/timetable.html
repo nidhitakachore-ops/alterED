@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alterED | Timetable</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="home.html" class="brand">
+        <img src="images/test 2.jpg" class="brand-logo" alt="alterED Logo">
+        <div class="brand-name">alter<span>ED</span></div>
+    </a>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="home.html">Home</a>
+        <a href="timetable.html" class="active">Timetable</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+
+    <a href="login.html" class="auth-nav-button">
+        <span class="user-icon">◉</span>
+        Logout
+    </a>
+
+    <button class="menu-button" id="menuButton" type="button">☰</button>
+
+</header>
+
+
+<main class="simple-page">
+
+    <div class="hero-small-title">
+        ACADEMIC SCHEDULE
+    </div>
+
+    <h1 class="simple-title">
+        Smart <span>Timetable</span>
+    </h1>
+
+    <p class="simple-description">
+        View your pre-scheduled lectures and important
+        changes or alternate arrangements.
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h2>Monday</h2>
+            <p>
+                <strong>09:00 AM</strong> — Data Structures<br>
+                Room 204<br><br>
+
+                <strong>10:30 AM</strong> — SQL<br>
+                Room 302<br><br>
+
+                <strong>12:00 PM</strong> — Computer Networks<br>
+                Room 201
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>Tuesday</h2>
+            <p>
+                <strong>09:00 AM</strong> — Database Systems<br>
+                Room 204<br><br>
+
+                <strong>11:00 AM</strong> — Artificial Intelligence<br>
+                Room 301<br><br>
+
+                <strong>02:00 PM</strong> — Web Development<br>
+                Lab 2
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>Wednesday</h2>
+            <p>
+                <strong>10:00 AM</strong> — Computer Networks<br>
+                Room 201<br><br>
+
+                <strong>12:00 PM</strong> — SQL<br>
+                Room 302
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <h2>⚡ Alternate Arrangement</h2>
+            <p>
+                Artificial Intelligence has been moved to
+                an alternate faculty for today's lecture.
+                <br><br>
+                <strong>02:00 PM — Online</strong>
+            </p>
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const navMenu = document.getElementById("navMenu");
+
+    menuButton.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+</script>
+
+</body>
+</html>

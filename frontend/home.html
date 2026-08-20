@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>alterED | Dashboard</title>
+
+    <!-- YOUR EXISTING CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dashboard-only styling.
+         This does NOT replace style.css. -->
+    <style>
+
+        /* =====================================================
+           ALTERED DASHBOARD
+           Only styles used by this page
+        ===================================================== */
+
+        .dashboard-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(112, 40, 255, 0.14), transparent 32%),
+                radial-gradient(circle at 85% 25%, rgba(217, 70, 239, 0.10), transparent 30%),
+                #050020;
+            color: #fff;
+            padding-bottom: 60px;
+        }
+
+        .dashboard-main {
+            width: min(1400px, 92%);
+            margin: 0 auto;
+            padding: 55px 0 0;
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-eyebrow {
+            color: #b85cff;
+            font-family: "Orbitron", sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-title {
+            margin: 0;
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(30px, 4vw, 52px);
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .dashboard-title span {
+            color: #d946ef;
+            text-shadow: 0 0 18px rgba(217, 70, 239, .55);
+        }
+
+        .dashboard-subtitle {
+            color: #aaa4c7;
+            margin: 14px 0 0;
+            font-size: 15px;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .dashboard-date {
+            min-width: 180px;
+            padding: 17px 20px;
+            border: 1px solid rgba(180, 80, 255, .45);
+            border-radius: 14px;
+            background: rgba(17, 5, 55, .72);
+            box-shadow: 0 0 25px rgba(120, 30, 255, .12);
+            text-align: center;
+        }
+
+        .dashboard-date small {
+            display: block;
+            color: #a79fbe;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .dashboard-date strong {
+            color: #fff;
+            font-family: "Orbitron", sans-serif;
+            font-size: 15px;
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .dashboard-stat {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(168, 75, 255, .35);
+            border-radius: 16px;
+            padding: 22px;
+            background:
+                linear-gradient(145deg, rgba(28, 7, 75, .95), rgba(9, 2, 32, .95));
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, .25),
+                inset 0 0 25px rgba(128, 44, 255, .05);
+            transition: .25s ease;
+        }
+
+        .dashboard-stat:hover {
+            transform: translateY(-4px);
+            border-color: rgba(217, 70, 239, .7);
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, .35),
+                0 0 22px rgba(168, 75, 255, .15);
+        }
+
+        .dashboard-stat::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            right: -35px;
+            top: -35px;
+            background: rgba(168, 75, 255, .12);
+            filter: blur(5px);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(145, 57, 255, .16);
+            border: 1px solid rgba(174, 74, 255, .35);
+            font-size: 19px;
+        }
+
+        .stat-label {
+            color: #a9a1bd;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+        }
+
+        .stat-value {
+            display: block;
+            font-family: "Orbitron", sans-serif;
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .stat-note {
+            color: #8e87a8;
+            font-size: 12px;
+        }
+
+
+        /* ================= GRID ================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.65fr) minmax(300px, .85fr);
+            gap: 22px;
+        }
+
+        .dashboard-panel {
+            border: 1px solid rgba(168, 75, 255, .34);
+            border-radius: 18px;
+            background:
+                linear-gradient(145deg, rgba(20, 5, 57, .96), rgba(7, 2, 27, .96));
+            box-shadow: 0 15px 45px rgba(0, 0, 0, .25);
+            overflow: hidden;
+        }
+
+        .panel-heading {
+            padding: 23px 25px;
+            border-bottom: 1px solid rgba(160, 80, 255, .17);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .panel-heading h2 {
+            margin: 5px 0 0;
+            font-family: "Orbitron", sans-serif;
+            font-size: 19px;
+            color: #fff;
+        }
+
+        .panel-label {
+            color: #b85cff;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+
+        /* ================= LIVE STATUS ================= */
+
+        .live-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 50px;
+            color: #ff6bdb;
+            border: 1px solid rgba(255, 74, 203, .4);
+            background: rgba(255, 48, 190, .08);
+            font-size: 10px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ff42c8;
+            box-shadow: 0 0 10px #ff42c8;
+            animation: livePulse 1.3s infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: .45;
+                transform: scale(.75);
+            }
+        }
+
+
+        /* ================= LECTURES ================= */
+
+        .lecture-list {
+            padding: 10px 18px 18px;
+        }
+
+        .lecture-row {
+            display: grid;
+            grid-template-columns: 95px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 8px;
+            border-bottom: 1px solid rgba(157, 79, 255, .12);
+        }
+
+        .lecture-row:last-child {
+            border-bottom: none;
+        }
+
+        .lecture-time strong {
+            display: block;
+            font-family: "Orbitron", sans-serif;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .lecture-time span {
+            color: #817b9c;
+            font-size: 11px;
+        }
+
+        .lecture-info h3 {
+            margin: 0 0 6px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .lecture-info p {
+            margin: 0;
+            color: #8f88a7;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .lecture-info p span {
+            color: #b85cff;
+        }
+
+        .lecture-status {
+            padding: 7px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            white-space: nowrap;
+        }
+
+        .status-live {
+            color: #ff73d6;
+            background: rgba(255, 60, 200, .10);
+            border: 1px solid rgba(255, 60, 200, .3);
+        }
+
+        .status-upcoming {
+            color: #a9a0ff;
+            background: rgba(120, 90, 255, .10);
+            border: 1px solid rgba(120, 90, 255, .25);
+        }
+
+        .status-completed {
+            color: #8b82a7;
+            background: rgba(140, 130, 170, .08);
+            border: 1px solid rgba(140, 130, 170, .18);
+        }
+
+        .status-alternate {
+            color: #d86cff;
+            background: rgba(170, 50, 255, .11);
+            border: 1px solid rgba(180, 60, 255, .35);
+        }
+
+
+        /* ================= NOTIFICATIONS ================= */
+
+        .notification-list {
+            padding: 10px 20px 20px;
+        }
+
+        .notification {
+            display: flex;
+            gap: 13px;
+            padding: 17px 4px;
+            border-bottom: 1px solid rgba(157, 79, 255, .12);
+        }
+
+        .notification:last-child {
+            border-bottom: none;
+        }
+
+        .notification-icon {
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: rgba(145, 57, 255, .13);
+            border: 1px solid rgba(170, 75, 255, .28);
+        }
+
+        .notification h3 {
+            margin: 0 0 5px;
+            color: #eee;
+            font-size: 13px;
+        }
+
+        .notification p {
+            margin: 0 0 5px;
+            color: #88819f;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .notification time {
+            color: #6f6985;
+            font-size: 10px;
+        }
+
+
+        /* ================= ATTENDANCE ================= */
+
+        .attendance-panel {
+            margin-top: 22px;
+            padding-bottom: 22px;
+        }
+
+        .attendance-content {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            align-items: center;
+            gap: 28px;
+            padding: 25px;
+        }
+
+        .attendance-ring {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: auto;
+            background:
+                radial-gradient(circle at center, #0c032d 56%, transparent 57%),
+                conic-gradient(#d946ef 0deg 309.6deg, rgba(115, 70, 180, .18) 309.6deg 360deg);
+            box-shadow: 0 0 30px rgba(217, 70, 239, .12);
+        }
+
+        .attendance-ring div {
+            text-align: center;
+        }
+
+        .attendance-ring strong {
+            display: block;
+            font-family: "Orbitron", sans-serif;
+            font-size: 27px;
+        }
+
+        .attendance-ring span {
+            color: #85809b;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .attendance-numbers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .attendance-number {
+            padding: 17px;
+            border: 1px solid rgba(164, 76, 255, .22);
+            border-radius: 12px;
+            background: rgba(20, 5, 55, .65);
+        }
+
+        .attendance-number strong {
+            display: block;
+            color: #fff;
+            font-family: "Orbitron", sans-serif;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .attendance-number span {
+            color: #817a98;
+            font-size: 10px;
+        }
+
+
+        /* ================= QUICK LINKS ================= */
+
+        .dashboard-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 22px;
+        }
+
+        .dashboard-link {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(168, 75, 255, .28);
+            border-radius: 14px;
+            padding: 18px;
+            background: rgba(15, 4, 43, .82);
+            transition: .25s ease;
+        }
+
+        .dashboard-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(217, 70, 239, .55);
+            box-shadow: 0 0 22px rgba(150, 50, 255, .12);
+        }
+
+        .dashboard-link-icon {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-link strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-link span {
+            color: #817b98;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+
+        /* ================= AI ASSISTANT ================= */
+
+        .ai-assistant {
+            margin-top: 22px;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid rgba(217, 70, 239, .32);
+            background:
+                radial-gradient(circle at 10% 50%, rgba(217, 70, 239, .12), transparent 35%),
+                linear-gradient(110deg, rgba(28, 6, 72, .95), rgba(10, 2, 34, .96));
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ai-symbol {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            border: 1px solid rgba(217, 70, 239, .45);
+            color: #ff74e3;
+            font-size: 24px;
+            box-shadow: 0 0 20px rgba(217, 70, 239, .15);
+        }
+
+        .ai-assistant-content {
+            flex: 1;
+        }
+
+        .ai-assistant-content small {
+            color: #b85cff;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .ai-assistant-content h2 {
+            font-family: "Orbitron", sans-serif;
+            font-size: 17px;
+            margin: 6px 0;
+        }
+
+        .ai-assistant-content p {
+            color: #8c85a2;
+            margin: 0;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .ai-button {
+            border: 1px solid rgba(217, 70, 239, .45);
+            background: linear-gradient(135deg, #7426ff, #c42eff);
+            color: white;
+            border-radius: 10px;
+            padding: 12px 17px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 11px;
+            box-shadow: 0 0 18px rgba(160, 40, 255, .18);
+        }
+
+        .ai-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .ai-response {
+            display: none;
+            margin-top: 12px;
+            color: #cfc8df;
+            font-size: 11px;
+        }
+
+        .ai-response.show {
+            display: block;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .dashboard-main {
+                width: 90%;
+                padding-top: 35px;
+            }
+
+            .dashboard-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-date {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .lecture-row {
+                grid-template-columns: 75px 1fr;
+            }
+
+            .lecture-status {
+                grid-column: 2;
+                width: max-content;
+            }
+
+            .attendance-content {
+                grid-template-columns: 1fr;
+            }
+
+            .attendance-numbers {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-links {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-assistant {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ai-button {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="dashboard-page">
+
+    <!-- =====================================================
+         SAME NAVIGATION
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <a href="home.html" class="brand">
+
+            <img
+                src="images/test 2.jpg"
+                class="brand-logo"
+                alt="alterED Logo"
+            >
+
+            <div class="brand-name">
+                alter<span>ED</span>
+            </div>
+
+        </a>
+
+
+        <nav class="nav-menu" id="navMenu">
+
+            <a href="home.html" class="active">
+                Home
+            </a>
+
+            <a href="timetable.html">
+                Timetable
+            </a>
+
+            <a href="attendance.html">
+                Attendance
+            </a>
+
+            <a href="faculty.html">
+                Faculty
+            </a>
+
+            <a href="student.html">
+                Student
+            </a>
+
+            <a href="admin.html">
+                Admin
+            </a>
+
+        </nav>
+
+
+        <a href="login.html" class="auth-nav-button">
+            <span class="user-icon">◉</span>
+            Logout
+        </a>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         DASHBOARD
+    ====================================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="dashboard-top">
+
+            <div>
+
+                <div class="dashboard-eyebrow">
+                    STUDENT DASHBOARD
+                </div>
+
+                <h1 class="dashboard-title">
+                    Welcome back,
+                    <span>Student</span>
+                </h1>
+
+                <p class="dashboard-subtitle">
+                    Stay updated with your lectures, attendance,
+                    faculty arrangements and important academic
+                    notifications.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-date">
+
+                <small>Today</small>
+
+                <strong id="todayDate">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="dashboard-stats">
+
+
+            <div class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Today's Lectures
+                    </span>
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                </div>
+
+                <span class="stat-value">
+                    5
+                </span>
+
+                <span class="stat-note">
+                    1 currently live
+                </span>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Next Lecture
+                    </span>
+
+                    <div class="stat-icon">
+                        🕐
+                    </div>
+
+                </div>
+
+                <span class="stat-value">
+                    10:30
+                </span>
+
+                <span class="stat-note">
+                    SQL • Room 302
+                </span>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Attendance
+                    </span>
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                </div>
+
+                <span class="stat-value">
+                    86%
+                </span>
+
+                <span class="stat-note">
+                    Overall attendance
+                </span>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        Notifications
+                    </span>
+
+                    <div class="stat-icon">
+                        🔔
+                    </div>
+
+                </div>
+
+                <span class="stat-value">
+                    3
+                </span>
+
+                <span class="stat-note">
+                    New academic updates
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MAIN TWO-COLUMN AREA
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ================= LECTURES ================= -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <div class="panel-label">
+                            TODAY'S SCHEDULE
+                        </div>
+
+                        <h2>
+                            Lecture Monitoring
+                        </h2>
+
+                    </div>
+
+
+                    <div class="live-pill">
+
+                        <span class="live-dot"></span>
+
+                        LIVE MONITORING
+
+                    </div>
+
+                </div>
+
+
+                <div class="lecture-list">
+
+
+                    <!-- LIVE -->
+
+                    <div class="lecture-row">
+
+                        <div class="lecture-time">
+
+                            <strong>
+                                09:00
+                            </strong>
+
+                            <span>
+                                10:00 AM
+                            </span>
+
+                        </div>
+
+
+                        <div class="lecture-info">
+
+                            <h3>
+                                Data Structures
+                            </h3>
+
+                            <p>
+                                Prof. Sharma
+                                <span>•</span>
+                                Room 204
+                            </p>
+
+                        </div>
+
+
+                        <div class="lecture-status status-completed">
+                            Completed
+                        </div>
+
+                    </div>
+
+
+                    <!-- CURRENT -->
+
+                    <div class="lecture-row">
+
+                        <div class="lecture-time">
+
+                            <strong>
+                                10:30
+                            </strong>
+
+                            <span>
+                                11:30 AM
+                            </span>
+
+                        </div>
+
+
+                        <div class="lecture-info">
+
+                            <h3>
+                                SQL
+                            </h3>
+
+                            <p>
+                                Prof. Mehta
+                                <span>•</span>
+                                Room 302
+                            </p>
+
+                        </div>
+
+
+                        <div class="lecture-status status-live">
+                            ● Live
+                        </div>
+
+                    </div>
+
+
+                    <!-- UPCOMING -->
+
+                    <div class="lecture-row">
+
+                        <div class="lecture-time">
+
+                            <strong>
+                                12:00
+                            </strong>
+
+                            <span>
+                                01:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="lecture-info">
+
+                            <h3>
+                                Computer Networks
+                            </h3>
+
+                            <p>
+                                Prof. Patel
+                                <span>•</span>
+                                Room 201
+                            </p>
+
+                        </div>
+
+
+                        <div class="lecture-status status-upcoming">
+                            Upcoming
+                        </div>
+
+                    </div>
+
+
+                    <!-- ALTERNATE -->
+
+                    <div class="lecture-row">
+
+                        <div class="lecture-time">
+
+                            <strong>
+                                02:00
+                            </strong>
+
+                            <span>
+                                03:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="lecture-info">
+
+                            <h3>
+                                Artificial Intelligence
+                            </h3>
+
+                            <p>
+                                Alternate Faculty Assigned
+                                <span>•</span>
+                                Online
+                            </p>
+
+                        </div>
+
+
+                        <div class="lecture-status status-alternate">
+                            Alternate
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= NOTIFICATIONS ================= -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <div class="panel-label">
+                            IMPORTANT
+                        </div>
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                    </div>
+
+                    <div class="live-pill">
+                        3 NEW
+                    </div>
+
+                </div>
+
+
+                <div class="notification-list">
+
+
+                    <div class="notification">
+
+                        <div class="notification-icon">
+                            ⚡
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Alternate Lecture Assigned
+                            </h3>
+
+                            <p>
+                                AI lecture has been assigned
+                                to alternate faculty.
+                            </p>
+
+                            <time>
+                                10 minutes ago
+                            </time>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notification">
+
+                        <div class="notification-icon">
+                            🔔
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Lecture Timing Updated
+                            </h3>
+
+                            <p>
+                                Computer Networks starts
+                                at 12:00 PM.
+                            </p>
+
+                            <time>
+                                1 hour ago
+                            </time>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notification">
+
+                        <div class="notification-icon">
+                            📢
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                New Announcement
+                            </h3>
+
+                            <p>
+                                Today's academic schedule
+                                has been updated.
+                            </p>
+
+                            <time>
+                                2 hours ago
+                            </time>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ATTENDANCE
+        ================================================== -->
+
+        <section class="dashboard-panel attendance-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <div class="panel-label">
+                        ATTENDANCE TRACKER
+                    </div>
+
+                    <h2>
+                        My Attendance
+                    </h2>
+
+                </div>
+
+                <a
+                    href="attendance.html"
+                    style="color:#b85cff;text-decoration:none;font-size:11px;"
+                >
+                    View Details →
+                </a>
+
+            </div>
+
+
+            <div class="attendance-content">
+
+
+                <div class="attendance-ring">
+
+                    <div>
+
+                        <strong>
+                            86%
+                        </strong>
+
+                        <span>
+                            Overall
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-numbers">
+
+
+                    <div class="attendance-number">
+
+                        <strong>
+                            18
+                        </strong>
+
+                        <span>
+                            Present
+                        </span>
+
+                    </div>
+
+
+                    <div class="attendance-number">
+
+                        <strong>
+                            4
+                        </strong>
+
+                        <span>
+                            Absent
+                        </span>
+
+                    </div>
+
+
+                    <div class="attendance-number">
+
+                        <strong>
+                            22
+                        </strong>
+
+                        <span>
+                            Total Lectures
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             QUICK LINKS
+        ================================================== -->
+
+        <section class="dashboard-links">
+
+
+            <a href="timetable.html" class="dashboard-link">
+
+                <div class="dashboard-link-icon">
+                    📅
+                </div>
+
+                <strong>
+                    Full Timetable
+                </strong>
+
+                <span>
+                    View scheduled and alternate lectures.
+                </span>
+
+            </a>
+
+
+            <a href="attendance.html" class="dashboard-link">
+
+                <div class="dashboard-link-icon">
+                    📊
+                </div>
+
+                <strong>
+                    Attendance Tracker
+                </strong>
+
+                <span>
+                    View student and faculty attendance records.
+                </span>
+
+            </a>
+
+
+            <a href="faculty.html" class="dashboard-link">
+
+                <div class="dashboard-link-icon">
+                    👨‍🏫
+                </div>
+
+                <strong>
+                    Faculty Arrangements
+                </strong>
+
+                <span>
+                    Check faculty schedules and alternate assignments.
+                </span>
+
+            </a>
+
+
+            <a href="admin.html" class="dashboard-link">
+
+                <div class="dashboard-link-icon">
+                    ⚙
+                </div>
+
+                <strong>
+                    Admin Portal
+                </strong>
+
+                <span>
+                    Manage academic information and arrangements.
+                </span>
+
+            </a>
+
+
+        </section>
+
+
+        <!-- =================================================
+             AI ASSISTANT
+        ================================================== -->
+
+        <section class="ai-assistant">
+
+            <div class="ai-symbol">
+                ✦
+            </div>
+
+
+            <div class="ai-assistant-content">
+
+                <small>
+                    ALTERED AI ASSISTANT
+                </small>
+
+                <h2>
+                    Need help with your schedule?
+                </h2>
+
+                <p>
+                    Ask about your next lecture, timetable,
+                    faculty arrangement or attendance.
+                </p>
+
+                <div
+                    class="ai-response"
+                    id="aiResponse"
+                ></div>
+
+            </div>
+
+
+            <button
+                class="ai-button"
+                id="aiButton"
+                type="button"
+            >
+                Ask alterED AI →
+            </button>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     EXISTING MOBILE NAVIGATION BEHAVIOUR
+========================================================= -->
+
+<script>
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const navMenu =
+        document.getElementById("navMenu");
+
+
+    menuButton.addEventListener("click", function () {
+
+        navMenu.classList.toggle("show");
+
+    });
+
+
+    /* =====================================================
+       DATE
+    ===================================================== */
+
+    const todayDate =
+        document.getElementById("todayDate");
+
+    const today =
+        new Date();
+
+
+    todayDate.textContent =
+        today.toLocaleDateString(
+            "en-GB",
+            {
+                weekday: "short",
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+
+    /* =====================================================
+       FRONTEND AI ASSISTANT
+    ===================================================== */
+
+    const aiButton =
+        document.getElementById("aiButton");
+
+    const aiResponse =
+        document.getElementById("aiResponse");
+
+
+    aiButton.addEventListener("click", function () {
+
+        aiResponse.textContent =
+            "Your next lecture is SQL at 10:30 AM in Room 302. Your current overall attendance is 86%.";
+
+        aiResponse.classList.add("show");
+
+    });
+
+</script>
+
+</body>
+</html>
