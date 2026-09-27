@@ -1,122 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>alterED | Admin</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-<header class="navbar">
-
-    <a href="home.html" class="brand">
-        <img src="images/test 2.jpg" class="brand-logo" alt="alterED Logo">
-        <div class="brand-name">alter<span>ED</span></div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | Admin
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
     </a>
-
-    <nav class="nav-menu" id="navMenu">
-        <a href="home.html">Home</a>
-        <a href="timetable.html">Timetable</a>
-        <a href="attendance.html">Attendance</a>
-        <a href="faculty.html">Faculty</a>
-        <a href="student.html">Student</a>
-        <a href="admin.html" class="active">Admin</a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
     </nav>
-
-    <a href="login.html" class="auth-nav-button">
-        <span class="user-icon">◉</span>
-        Logout
-    </a>
-
-    <button class="menu-button" id="menuButton" type="button">☰</button>
-
-</header>
-
-
-<main class="simple-page">
-
-    <div class="hero-small-title">
-        SYSTEM MANAGEMENT
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
     </div>
-
-    <h1 class="simple-title">
-        Admin <span>Portal</span>
+   </header>
+   <main class="page-shell">
+    <span class="section-label">
+     PORTAL ADMINISTRATION
+    </span>
+    <h1 class="page-title">
+     Admin
+     <span>
+      Panel
+     </span>
     </h1>
-
-    <p class="simple-description">
-        Manage academic schedules, student records,
-        attendance and faculty information.
+    <p class="page-subtitle">
+     Administrative overview for academic portal coordination.
     </p>
-
-
-    <div class="feature-grid">
-
-        <div class="feature-card">
-            <h2>📅 Timetable Management</h2>
-            <p>
-                Review and manage scheduled lectures,
-                timings, rooms and alternate arrangements.
-            </p>
-            <br>
-            <a href="timetable.html" class="get-started">
-                Open Timetable →
-            </a>
-        </div>
-
-
-        <div class="feature-card">
-            <h2>📊 Attendance Management</h2>
-            <p>
-                Access attendance information and monitor
-                academic attendance records.
-            </p>
-            <br>
-            <a href="attendance.html" class="get-started">
-                Open Attendance →
-            </a>
-        </div>
-
-
-        <div class="feature-card">
-            <h2>👨‍🏫 Faculty Management</h2>
-            <p>
-                View faculty assignments and alternate
-                faculty arrangements.
-            </p>
-            <br>
-            <a href="faculty.html" class="get-started">
-                Open Faculty →
-            </a>
-        </div>
-
-
-        <div class="feature-card">
-            <h2>🎓 Student Management</h2>
-            <p>
-                Access the student portal and registration
-                section.
-            </p>
-            <br>
-            <a href="register.html" class="get-started">
-                Register Student →
-            </a>
-        </div>
-
+    <div class="content-grid">
+     <div class="data-card">
+      <h2>
+       Schedule Management
+      </h2>
+      <p>
+       Maintain lecture timings, rooms and alternate faculty arrangements.
+      </p>
+     </div>
+     <div class="data-card">
+      <h2>
+       Notifications
+      </h2>
+      <p>
+       Publish academic updates and schedule changes for students.
+      </p>
+     </div>
+     <div class="data-card">
+      <h2>
+       Attendance
+      </h2>
+      <p>
+       Manage attendance sessions and faculty-generated QR validation.
+      </p>
+     </div>
+     <div class="data-card">
+      <h2>
+       Examinations
+      </h2>
+      <p>
+       Maintain examination dates, venues and assessment schedules.
+      </p>
+     </div>
     </div>
-
-</main>
-
-
-<script>
-    const menuButton = document.getElementById("menuButton");
-    const navMenu = document.getElementById("navMenu");
-
-    menuButton.addEventListener("click", () => {
-        navMenu.classList.toggle("show");
-    });
-</script>
-
-</body>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
 </html>
+
