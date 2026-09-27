@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alterED | Photos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="home.html" class="brand">
+        <img src="images/test 2.jpg" class="brand-logo" alt="alterED Logo">
+        <div class="brand-name">alter<span>ED</span></div>
+    </a>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="home.html">Home</a>
+        <a href="timetable.html">Timetable</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="student.html">Student</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+
+    <a href="login.html" class="auth-nav-button">
+        <span class="user-icon">◉</span>
+        Logout
+    </a>
+
+    <button class="menu-button" id="menuButton" type="button">☰</button>
+
+</header>
+
+
+<main class="simple-page">
+
+    <div class="hero-small-title">
+        ALTERED GALLERY
+    </div>
+
+    <h1 class="simple-title">
+        Campus <span>Photos</span>
+    </h1>
+
+    <p class="simple-description">
+        A visual section for the alterED education platform.
+    </p>
+
+
+    <div class="photo-container">
+
+        <img
+            src="images/test 2.jpg"
+            class="main-photo"
+            alt="alterED"
+        >
+
+    </div>
+
+</main>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const navMenu = document.getElementById("navMenu");
+
+    menuButton.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+</script>
+
+</body>
+</html>
