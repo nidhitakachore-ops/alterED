@@ -81,9 +81,27 @@ document.addEventListener(
 
             registerForm.addEventListener(
                 "submit",
-                function (event) {
+                async function (event) {
 
                     event.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "registerName"
+                        ).value;
+
+
+                    const email =
+                        document.getElementById(
+                            "registerEmail"
+                        ).value;
+
+
+                    const role =
+                        document.getElementById(
+                            "registerRole"
+                        ).value;
 
 
                     const password =
@@ -117,8 +135,43 @@ document.addEventListener(
                     }
 
 
-                    message.textContent =
-                        "Registration successful on frontend. Database connection will be added next.";
+                    try {
+
+                        const response =
+                            await fetch(
+                                "http://localhost:5000/api/register",
+                                {
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body: JSON.stringify({
+                                        name,
+                                        email,
+                                        role,
+                                        password
+                                    })
+                                }
+                            );
+
+
+                        const data =
+                            await response.json();
+
+
+                        message.textContent =
+                            data.message;
+
+
+                    } catch (error) {
+
+                        message.textContent =
+                            "Unable to connect to backend.";
+
+                    }
 
                 }
             );
