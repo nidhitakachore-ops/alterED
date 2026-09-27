@@ -1,2460 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>alterED | Student Portal</title>
-
-    <!-- EXISTING CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-
-    <!-- =====================================================
-         STUDENT PAGE ONLY
-         Existing style.css is NOT being replaced.
-    ====================================================== -->
-
-    <style>
-
-        .student-page {
-            min-height: 100vh;
-            background:
-                radial-gradient(
-                    circle at 15% 10%,
-                    rgba(112,40,255,.14),
-                    transparent 32%
-                ),
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(217,70,239,.10),
-                    transparent 30%
-                ),
-                #050020;
-
-            color: #fff;
-            padding-bottom: 60px;
-        }
-
-
-        .student-main {
-            width: min(1400px, 92%);
-            margin: auto;
-            padding-top: 48px;
-        }
-
-
-        /* =====================================================
-           PAGE HEADER
-        ====================================================== */
-
-        .student-header {
-
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-
-            gap: 25px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .student-label {
-
-            color: #b85cff;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .student-header h1 {
-
-            margin: 0;
-
-            font-family: "Orbitron", sans-serif;
-
-            font-size: clamp(
-                28px,
-                4vw,
-                48px
-            );
-        }
-
-
-        .student-header h1 span {
-
-            color: #d946ef;
-
-            text-shadow:
-                0 0 18px
-                rgba(217,70,239,.5);
-        }
-
-
-        .student-header p {
-
-            margin: 12px 0 0;
-
-            max-width: 650px;
-
-            color: #9189a9;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-        }
-
-
-        .student-date {
-
-            min-width: 180px;
-
-            padding: 16px 20px;
-
-            border:
-
-                1px solid
-                rgba(180,80,255,.35);
-
-            border-radius: 14px;
-
-            background:
-
-                rgba(18,5,55,.8);
-
-            text-align: center;
-        }
-
-
-        .student-date small {
-
-            display: block;
-
-            color: #817a98;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 7px;
-        }
-
-
-        .student-date strong {
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 13px;
-        }
-
-
-        /* =====================================================
-           FILTER BAR
-        ====================================================== */
-
-        .student-controls {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-bottom: 22px;
-        }
-
-
-        .student-filter {
-
-            padding: 10px 15px;
-
-            border-radius: 9px;
-
-            border:
-
-                1px solid
-                rgba(164,76,255,.25);
-
-            background:
-                rgba(15,4,43,.8);
-
-            color: #aaa2bd;
-
-            cursor: pointer;
-
-            font-size: 11px;
-
-            transition: .2s ease;
-        }
-
-
-        .student-filter:hover,
-        .student-filter.active {
-
-            color: white;
-
-            border-color:
-                rgba(217,70,239,.55);
-
-            background:
-                rgba(128,40,255,.18);
-
-            box-shadow:
-                0 0 15px
-                rgba(150,50,255,.1);
-        }
-
-
-        /* =====================================================
-           SUMMARY CARDS
-        ====================================================== */
-
-        .student-stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 16px;
-
-            margin-bottom: 22px;
-        }
-
-
-        .student-stat {
-
-            padding: 20px;
-
-            border:
-
-                1px solid
-                rgba(168,75,255,.30);
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(28,7,75,.94),
-                    rgba(9,2,32,.95)
-                );
-
-            transition: .2s ease;
-        }
-
-
-        .student-stat:hover {
-
-            transform:
-                translateY(-3px);
-
-            border-color:
-                rgba(217,70,239,.6);
-        }
-
-
-        .student-stat-label {
-
-            color: #8f88a7;
-
-            font-size: 10px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.3px;
-        }
-
-
-        .student-stat-value {
-
-            display: block;
-
-            margin-top: 12px;
-
-            color: white;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 25px;
-        }
-
-
-        .student-stat-note {
-
-            display: block;
-
-            margin-top: 5px;
-
-            color: #716a86;
-
-            font-size: 10px;
-        }
-
-
-        /* =====================================================
-           MAIN GRID
-        ====================================================== */
-
-        .student-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1.55fr)
-                minmax(300px, .75fr);
-
-            gap: 20px;
-        }
-
-
-        .student-panel {
-
-            border:
-
-                1px solid
-                rgba(168,75,255,.30);
-
-            border-radius: 17px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(20,5,57,.96),
-                    rgba(7,2,27,.96)
-                );
-
-            overflow: hidden;
-
-            box-shadow:
-                0 15px 45px
-                rgba(0,0,0,.24);
-        }
-
-
-        .student-panel-header {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 15px;
-
-            padding: 20px 22px;
-
-            border-bottom:
-
-                1px solid
-                rgba(160,80,255,.15);
-        }
-
-
-        .student-panel-label {
-
-            color: #b85cff;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            font-weight: 700;
-        }
-
-
-        .student-panel-header h2 {
-
-            margin: 5px 0 0;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 17px;
-        }
-
-
-        .student-count {
-
-            color: #d946ef;
-
-            border:
-
-                1px solid
-                rgba(217,70,239,.35);
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           LECTURES
-        ====================================================== */
-
-        .student-lectures {
-
-            padding: 8px 18px 18px;
-        }
-
-
-        .student-lecture {
-
-            display: grid;
-
-            grid-template-columns:
-                85px
-                minmax(0,1fr)
-                auto;
-
-            align-items: center;
-
-            gap: 17px;
-
-            padding: 17px 6px;
-
-            border-bottom:
-
-                1px solid
-                rgba(157,79,255,.12);
-
-            cursor: pointer;
-
-            transition: .2s ease;
-        }
-
-
-        .student-lecture:last-child {
-
-            border-bottom: none;
-        }
-
-
-        .student-lecture:hover {
-
-            background:
-                rgba(130,40,255,.06);
-
-            padding-left: 10px;
-
-            padding-right: 10px;
-        }
-
-
-        .lecture-time strong {
-
-            display: block;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 14px;
-        }
-
-
-        .lecture-time span {
-
-            color: #77708f;
-
-            font-size: 10px;
-        }
-
-
-        .lecture-details h3 {
-
-            margin: 0 0 5px;
-
-            font-size: 14px;
-        }
-
-
-        .lecture-details p {
-
-            margin: 0;
-
-            color: #88819e;
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-
-        .lecture-details p b {
-
-            color: #b85cff;
-        }
-
-
-        .lecture-status {
-
-            padding: 7px 9px;
-
-            border-radius: 7px;
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-
-            letter-spacing: .6px;
-
-            white-space: nowrap;
-        }
-
-
-        .status-live {
-
-            color: #ff73d6;
-
-            border:
-
-                1px solid
-                rgba(255,60,200,.32);
-
-            background:
-                rgba(255,60,200,.08);
-        }
-
-
-        .status-upcoming {
-
-            color: #aaa1ff;
-
-            border:
-
-                1px solid
-                rgba(120,90,255,.28);
-
-            background:
-                rgba(120,90,255,.08);
-        }
-
-
-        .status-alternate {
-
-            color: #df76ff;
-
-            border:
-
-                1px solid
-                rgba(190,60,255,.32);
-
-            background:
-                rgba(180,50,255,.09);
-        }
-
-
-        .status-completed {
-
-            color: #817b95;
-
-            border:
-
-                1px solid
-                rgba(130,120,155,.20);
-
-            background:
-                rgba(130,120,155,.06);
-        }
-
-
-        /* =====================================================
-           NOTIFICATIONS
-        ====================================================== */
-
-        .student-notifications {
-
-            padding: 8px 20px 20px;
-        }
-
-
-        .student-notification {
-
-            display: flex;
-
-            gap: 12px;
-
-            padding: 15px 2px;
-
-            border-bottom:
-
-                1px solid
-                rgba(157,79,255,.12);
-
-            cursor: pointer;
-
-            transition: .2s ease;
-        }
-
-
-        .student-notification:hover {
-
-            padding-left: 6px;
-
-            background:
-                rgba(130,40,255,.05);
-        }
-
-
-        .student-notification:last-child {
-
-            border-bottom: none;
-        }
-
-
-        .notification-symbol {
-
-            flex: 0 0 36px;
-
-            width: 36px;
-
-            height: 36px;
-
-            display: grid;
-
-            place-items: center;
-
-            border-radius: 10px;
-
-            background:
-                rgba(145,57,255,.13);
-
-            border:
-
-                1px solid
-                rgba(170,75,255,.25);
-        }
-
-
-        .student-notification h3 {
-
-            margin: 0 0 4px;
-
-            font-size: 12px;
-        }
-
-
-        .student-notification p {
-
-            margin: 0 0 5px;
-
-            color: #827b98;
-
-            font-size: 10px;
-
-            line-height: 1.5;
-        }
-
-
-        .student-notification time {
-
-            color: #615b75;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           ATTENDANCE
-        ====================================================== */
-
-        .student-attendance {
-
-            margin-top: 20px;
-
-            padding-bottom: 20px;
-        }
-
-
-        .attendance-body {
-
-            display: grid;
-
-            grid-template-columns:
-                150px
-                1fr;
-
-            gap: 25px;
-
-            align-items: center;
-
-            padding: 25px;
-        }
-
-
-        .attendance-circle {
-
-            width: 125px;
-
-            height: 125px;
-
-            border-radius: 50%;
-
-            display: grid;
-
-            place-items: center;
-
-            margin: auto;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    #0b032c 56%,
-                    transparent 57%
-                ),
-
-                conic-gradient(
-                    #d946ef 0deg 309deg,
-                    rgba(115,70,180,.15)
-                    309deg 360deg
-                );
-        }
-
-
-        .attendance-circle strong {
-
-            display: block;
-
-            text-align: center;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 24px;
-        }
-
-
-        .attendance-circle span {
-
-            display: block;
-
-            margin-top: 4px;
-
-            text-align: center;
-
-            color: #817a98;
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-        }
-
-
-        .attendance-data {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap: 10px;
-        }
-
-
-        .attendance-item {
-
-            padding: 15px;
-
-            border:
-
-                1px solid
-                rgba(164,76,255,.20);
-
-            border-radius: 11px;
-
-            background:
-                rgba(18,5,52,.7);
-        }
-
-
-        .attendance-item strong {
-
-            display: block;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 18px;
-
-            margin-bottom: 5px;
-        }
-
-
-        .attendance-item span {
-
-            color: #817a98;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           QUICK ACTIONS
-        ====================================================== */
-
-        .student-actions {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4,1fr);
-
-            gap: 14px;
-
-            margin-top: 20px;
-        }
-
-
-        .student-action {
-
-            padding: 17px;
-
-            text-decoration: none;
-
-            color: white;
-
-            border:
-
-                1px solid
-                rgba(168,75,255,.25);
-
-            border-radius: 13px;
-
-            background:
-                rgba(15,4,43,.8);
-
-            cursor: pointer;
-
-            transition: .2s ease;
-        }
-
-
-        .student-action:hover {
-
-            transform:
-                translateY(-3px);
-
-            border-color:
-                rgba(217,70,239,.55);
-
-            box-shadow:
-                0 0 20px
-                rgba(150,50,255,.10);
-        }
-
-
-        .student-action-icon {
-
-            font-size: 20px;
-
-            margin-bottom: 9px;
-        }
-
-
-        .student-action strong {
-
-            display: block;
-
-            font-size: 12px;
-
-            margin-bottom: 4px;
-        }
-
-
-        .student-action span {
-
-            color: #77718d;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           MODAL
-        ====================================================== */
-
-        .student-modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 9999;
-
-            display: none;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(2,0,15,.78);
-
-            backdrop-filter:
-                blur(8px);
-        }
-
-
-        .student-modal.show {
-
-            display: flex;
-        }
-
-
-        .modal-box {
-
-            width: min(540px,100%);
-
-            border:
-
-                1px solid
-                rgba(180,75,255,.42);
-
-            border-radius: 18px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    #19063d,
-                    #08021e
-                );
-
-            box-shadow:
-
-                0 30px 80px
-                rgba(0,0,0,.55),
-
-                0 0 35px
-                rgba(150,50,255,.12);
-
-            padding: 25px;
-
-            position: relative;
-        }
-
-
-        .modal-close {
-
-            position: absolute;
-
-            right: 18px;
-
-            top: 15px;
-
-            width: 32px;
-
-            height: 32px;
-
-            border-radius: 50%;
-
-            border:
-
-                1px solid
-                rgba(180,75,255,.3);
-
-            background:
-                rgba(255,255,255,.03);
-
-            color: white;
-
-            cursor: pointer;
-        }
-
-
-        .modal-label {
-
-            color: #b85cff;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            font-weight: 700;
-        }
-
-
-        .modal-box h2 {
-
-            margin: 8px 0 18px;
-
-            font-family:
-                "Orbitron",
-                sans-serif;
-
-            font-size: 20px;
-        }
-
-
-        .modal-details {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap: 10px;
-        }
-
-
-        .modal-detail {
-
-            padding: 13px;
-
-            border:
-
-                1px solid
-                rgba(164,76,255,.18);
-
-            border-radius: 10px;
-
-            background:
-                rgba(20,5,55,.6);
-        }
-
-
-        .modal-detail small {
-
-            display: block;
-
-            color: #716a87;
-
-            font-size: 9px;
-
-            margin-bottom: 5px;
-
-            text-transform: uppercase;
-        }
-
-
-        .modal-detail strong {
-
-            font-size: 11px;
-
-            color: #eee;
-        }
-
-
-        .modal-message {
-
-            margin-top: 14px;
-
-            padding: 14px;
-
-            border-radius: 10px;
-
-            background:
-                rgba(150,50,255,.08);
-
-            color: #9d95b1;
-
-            font-size: 10px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ====================================================== */
-
-        @media(max-width:1000px) {
-
-            .student-stats {
-
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-
-
-            .student-grid {
-
-                grid-template-columns:1fr;
-            }
-
-
-            .student-actions {
-
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-        }
-
-
-        @media(max-width:700px) {
-
-            .student-main {
-
-                width: 90%;
-
-                padding-top: 32px;
-            }
-
-
-            .student-header {
-
-                flex-direction: column;
-
-                align-items: flex-start;
-            }
-
-
-            .student-date {
-
-                width: 100%;
-
-                box-sizing: border-box;
-            }
-
-
-            .student-stats {
-
-                grid-template-columns:1fr;
-            }
-
-
-            .student-lecture {
-
-                grid-template-columns:
-                    70px
-                    1fr;
-            }
-
-
-            .lecture-status {
-
-                grid-column:2;
-
-                width: max-content;
-            }
-
-
-            .attendance-body {
-
-                grid-template-columns:1fr;
-            }
-
-
-            .attendance-data {
-
-                grid-template-columns:1fr;
-            }
-
-
-            .student-actions {
-
-                grid-template-columns:1fr;
-            }
-
-
-            .modal-details {
-
-                grid-template-columns:1fr;
-            }
-        }
-
-    </style>
-
-</head>
-
-
-<body>
-
-
-<div class="student-page">
-
-
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
-
-    <header class="navbar">
-
-        <a
-            href="home.html"
-            class="brand"
-        >
-
-            <img
-                src="images/test 2.jpg"
-                class="brand-logo"
-                alt="alterED Logo"
-            >
-
-            <div class="brand-name">
-                alter<span>ED</span>
-            </div>
-
-        </a>
-
-
-        <nav
-            class="nav-menu"
-            id="navMenu"
-        >
-
-            <a href="home.html">
-                Home
-            </a>
-
-            <a href="timetable.html">
-                Timetable
-            </a>
-
-            <a href="attendance.html">
-                Attendance
-            </a>
-
-            <a href="faculty.html">
-                Faculty
-            </a>
-
-            <a
-                href="student.html"
-                class="active"
-            >
-                Student
-            </a>
-
-            <a href="admin.html">
-                Admin
-            </a>
-
-        </nav>
-
-
-        <a
-            href="login.html"
-            class="auth-nav-button"
-        >
-            <span class="user-icon">
-                ◉
-            </span>
-
-            Logout
-        </a>
-
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            type="button"
-        >
-            ☰
-        </button>
-
-    </header>
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main class="student-main">
-
-
-        <!-- ================= HEADER ================= -->
-
-        <section class="student-header">
-
-            <div>
-
-                <div class="student-label">
-                    STUDENT PORTAL
-                </div>
-
-
-                <h1>
-                    Hello,
-                    <span>Student</span>
-                </h1>
-
-
-                <p>
-                    Manage your academic schedule, monitor
-                    live lectures, view alternate arrangements
-                    and keep track of your attendance.
-                </p>
-
-            </div>
-
-
-            <div class="student-date">
-
-                <small>
-                    Today
-                </small>
-
-                <strong id="studentDate">
-                    Loading...
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FILTERS
-        ================================================== -->
-
-        <section class="student-controls">
-
-            <button
-                class="student-filter active"
-                data-filter="all"
-                type="button"
-            >
-                All Lectures
-            </button>
-
-
-            <button
-                class="student-filter"
-                data-filter="live"
-                type="button"
-            >
-                Live
-            </button>
-
-
-            <button
-                class="student-filter"
-                data-filter="upcoming"
-                type="button"
-            >
-                Upcoming
-            </button>
-
-
-            <button
-                class="student-filter"
-                data-filter="alternate"
-                type="button"
-            >
-                Alternate
-            </button>
-
-
-            <button
-                class="student-filter"
-                data-filter="completed"
-                type="button"
-            >
-                Completed
-            </button>
-
-        </section>
-
-
-        <!-- =================================================
-             SUMMARY
-        ================================================== -->
-
-        <section class="student-stats">
-
-
-            <div class="student-stat">
-
-                <span class="student-stat-label">
-                    Today's Lectures
-                </span>
-
-                <span
-                    class="student-stat-value"
-                    id="lectureCount"
-                >
-                    5
-                </span>
-
-                <span class="student-stat-note">
-                    Total scheduled today
-                </span>
-
-            </div>
-
-
-            <div class="student-stat">
-
-                <span class="student-stat-label">
-                    Current Lecture
-                </span>
-
-                <span class="student-stat-value">
-                    SQL
-                </span>
-
-                <span class="student-stat-note">
-                    Room 302 • Live
-                </span>
-
-            </div>
-
-
-            <div class="student-stat">
-
-                <span class="student-stat-label">
-                    Alternate
-                </span>
-
-                <span
-                    class="student-stat-value"
-                    id="alternateCount"
-                >
-                    1
-                </span>
-
-                <span class="student-stat-note">
-                    Alternate arrangement today
-                </span>
-
-            </div>
-
-
-            <div class="student-stat">
-
-                <span class="student-stat-label">
-                    Attendance
-                </span>
-
-                <span class="student-stat-value">
-                    86%
-                </span>
-
-                <span class="student-stat-note">
-                    Overall student attendance
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             MAIN CONTENT
-        ================================================== -->
-
-        <section class="student-grid">
-
-
-            <!-- ================= SCHEDULE ================= -->
-
-            <div class="student-panel">
-
-                <div class="student-panel-header">
-
-                    <div>
-
-                        <div class="student-panel-label">
-                            MY SCHEDULE
-                        </div>
-
-                        <h2>
-                            Today's Lectures
-                        </h2>
-
-                    </div>
-
-
-                    <div class="student-count">
-                        5 LECTURES
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="student-lectures"
-                    id="lectureContainer"
-                >
-
-
-                    <!-- DATA 1 -->
-
-                    <div
-                        class="student-lecture"
-                        data-type="completed"
-                        data-title="Data Structures"
-                        data-time="09:00 AM - 10:00 AM"
-                        data-faculty="Prof. Sharma"
-                        data-room="Room 204"
-                        data-mode="Offline"
-                        data-message="This lecture has been completed."
-                    >
-
-                        <div class="lecture-time">
-
-                            <strong>
-                                09:00
-                            </strong>
-
-                            <span>
-                                10:00 AM
-                            </span>
-
-                        </div>
-
-
-                        <div class="lecture-details">
-
-                            <h3>
-                                Data Structures
-                            </h3>
-
-                            <p>
-                                Prof. Sharma
-                                <b>•</b>
-                                Room 204
-                            </p>
-
-                        </div>
-
-
-                        <div class="lecture-status status-completed">
-                            Completed
-                        </div>
-
-                    </div>
-
-
-                    <!-- DATA 2 -->
-
-                    <div
-                        class="student-lecture"
-                        data-type="live"
-                        data-title="SQL"
-                        data-time="10:30 AM - 11:30 AM"
-                        data-faculty="Prof. Mehta"
-                        data-room="Room 302"
-                        data-mode="Offline"
-                        data-message="This lecture is currently live."
-                    >
-
-                        <div class="lecture-time">
-
-                            <strong>
-                                10:30
-                            </strong>
-
-                            <span>
-                                11:30 AM
-                            </span>
-
-                        </div>
-
-
-                        <div class="lecture-details">
-
-                            <h3>
-                                SQL
-                            </h3>
-
-                            <p>
-                                Prof. Mehta
-                                <b>•</b>
-                                Room 302
-                            </p>
-
-                        </div>
-
-
-                        <div class="lecture-status status-live">
-                            ● Live
-                        </div>
-
-                    </div>
-
-
-                    <!-- DATA 3 -->
-
-                    <div
-                        class="student-lecture"
-                        data-type="upcoming"
-                        data-title="Computer Networks"
-                        data-time="12:00 PM - 01:00 PM"
-                        data-faculty="Prof. Patel"
-                        data-room="Room 201"
-                        data-mode="Offline"
-                        data-message="This lecture is scheduled and will begin at 12:00 PM."
-                    >
-
-                        <div class="lecture-time">
-
-                            <strong>
-                                12:00
-                            </strong>
-
-                            <span>
-                                01:00 PM
-                            </span>
-
-                        </div>
-
-
-                        <div class="lecture-details">
-
-                            <h3>
-                                Computer Networks
-                            </h3>
-
-                            <p>
-                                Prof. Patel
-                                <b>•</b>
-                                Room 201
-                            </p>
-
-                        </div>
-
-
-                        <div class="lecture-status status-upcoming">
-                            Upcoming
-                        </div>
-
-                    </div>
-
-
-                    <!-- DATA 4 -->
-
-                    <div
-                        class="student-lecture"
-                        data-type="alternate"
-                        data-title="Artificial Intelligence"
-                        data-time="02:00 PM - 03:00 PM"
-                        data-faculty="Alternate Faculty"
-                        data-room="Online"
-                        data-mode="Live Online"
-                        data-message="The original faculty is unavailable. An alternate faculty member has been assigned."
-                    >
-
-                        <div class="lecture-time">
-
-                            <strong>
-                                02:00
-                            </strong>
-
-                            <span>
-                                03:00 PM
-                            </span>
-
-                        </div>
-
-
-                        <div class="lecture-details">
-
-                            <h3>
-                                Artificial Intelligence
-                            </h3>
-
-                            <p>
-                                Alternate Faculty
-                                <b>•</b>
-                                Online
-                            </p>
-
-                        </div>
-
-
-                        <div class="lecture-status status-alternate">
-                            Alternate
-                        </div>
-
-                    </div>
-
-
-                    <!-- DATA 5 -->
-
-                    <div
-                        class="student-lecture"
-                        data-type="upcoming"
-                        data-title="Database Management"
-                        data-time="03:30 PM - 04:30 PM"
-                        data-faculty="Prof. Kapoor"
-                        data-room="Room 105"
-                        data-mode="Offline"
-                        data-message="This lecture is scheduled for 03:30 PM."
-                    >
-
-                        <div class="lecture-time">
-
-                            <strong>
-                                03:30
-                            </strong>
-
-                            <span>
-                                04:30 PM
-                            </span>
-
-                        </div>
-
-
-                        <div class="lecture-details">
-
-                            <h3>
-                                Database Management
-                            </h3>
-
-                            <p>
-                                Prof. Kapoor
-                                <b>•</b>
-                                Room 105
-                            </p>
-
-                        </div>
-
-
-                        <div class="lecture-status status-upcoming">
-                            Upcoming
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= NOTIFICATIONS ================= -->
-
-            <div class="student-panel">
-
-                <div class="student-panel-header">
-
-                    <div>
-
-                        <div class="student-panel-label">
-                            LIVE UPDATES
-                        </div>
-
-                        <h2>
-                            Notifications
-                        </h2>
-
-                    </div>
-
-
-                    <div class="student-count">
-                        3 NEW
-                    </div>
-
-                </div>
-
-
-                <div class="student-notifications">
-
-
-                    <div
-                        class="student-notification"
-                        data-notification="Alternate Faculty"
-                    >
-
-                        <div class="notification-symbol">
-                            ⚡
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                Alternate Lecture Assigned
-                            </h3>
-
-                            <p>
-                                AI lecture will be conducted
-                                by alternate faculty.
-                            </p>
-
-                            <time>
-                                10 minutes ago
-                            </time>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="student-notification"
-                        data-notification="Timing Update"
-                    >
-
-                        <div class="notification-symbol">
-                            🔔
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                Lecture Timing Updated
-                            </h3>
-
-                            <p>
-                                Computer Networks starts
-                                at 12:00 PM.
-                            </p>
-
-                            <time>
-                                1 hour ago
-                            </time>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="student-notification"
-                        data-notification="Announcement"
-                    >
-
-                        <div class="notification-symbol">
-                            📢
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                New Announcement
-                            </h3>
-
-                            <p>
-                                Today's academic schedule
-                                has been updated.
-                            </p>
-
-                            <time>
-                                2 hours ago
-                            </time>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =================================================
-             ATTENDANCE
-        ================================================== -->
-
-        <section class="student-panel student-attendance">
-
-            <div class="student-panel-header">
-
-                <div>
-
-                    <div class="student-panel-label">
-                        ATTENDANCE
-                    </div>
-
-                    <h2>
-                        My Attendance
-                    </h2>
-
-                </div>
-
-
-                <a
-                    href="attendance.html"
-                    style="
-                        color:#b85cff;
-                        text-decoration:none;
-                        font-size:10px;
-                    "
-                >
-                    View Full Tracker →
-                </a>
-
-            </div>
-
-
-            <div class="attendance-body">
-
-
-                <div class="attendance-circle">
-
-                    <div>
-
-                        <strong>
-                            86%
-                        </strong>
-
-                        <span>
-                            Overall
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="attendance-data">
-
-
-                    <div class="attendance-item">
-
-                        <strong>
-                            18
-                        </strong>
-
-                        <span>
-                            Present
-                        </span>
-
-                    </div>
-
-
-                    <div class="attendance-item">
-
-                        <strong>
-                            4
-                        </strong>
-
-                        <span>
-                            Absent
-                        </span>
-
-                    </div>
-
-
-                    <div class="attendance-item">
-
-                        <strong>
-                            22
-                        </strong>
-
-                        <span>
-                            Total
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ACTIONS
-        ================================================== -->
-
-        <section class="student-actions">
-
-
-            <a
-                href="timetable.html"
-                class="student-action"
-            >
-
-                <div class="student-action-icon">
-                    📅
-                </div>
-
-                <strong>
-                    Full Timetable
-                </strong>
-
-                <span>
-                    Scheduled and alternate lectures
-                </span>
-
-            </a>
-
-
-            <a
-                href="attendance.html"
-                class="student-action"
-            >
-
-                <div class="student-action-icon">
-                    📊
-                </div>
-
-                <strong>
-                    Attendance Tracker
-                </strong>
-
-                <span>
-                    Detailed attendance records
-                </span>
-
-            </a>
-
-
-            <a
-                href="faculty.html"
-                class="student-action"
-            >
-
-                <div class="student-action-icon">
-                    👨‍🏫
-                </div>
-
-                <strong>
-                    Faculty Schedule
-                </strong>
-
-                <span>
-                    Faculty and alternate arrangements
-                </span>
-
-            </a>
-
-
-            <a
-                href="home.html"
-                class="student-action"
-            >
-
-                <div class="student-action-icon">
-                    🏠
-                </div>
-
-                <strong>
-                    Dashboard
-                </strong>
-
-                <span>
-                    Return to main dashboard
-                </span>
-
-            </a>
-
-
-        </section>
-
-
-    </main>
-
-</div>
-
-
-<!-- =========================================================
-     LECTURE DETAILS MODAL
-========================================================== -->
-
-<div
-    class="student-modal"
-    id="lectureModal"
->
-
-    <div class="modal-box">
-
-        <button
-            class="modal-close"
-            id="modalClose"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <div class="modal-label">
-            LECTURE DETAILS
-        </div>
-
-
-        <h2 id="modalTitle">
-            Lecture
-        </h2>
-
-
-        <div class="modal-details">
-
-
-            <div class="modal-detail">
-
-                <small>
-                    Time
-                </small>
-
-                <strong id="modalTime">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="modal-detail">
-
-                <small>
-                    Faculty
-                </small>
-
-                <strong id="modalFaculty">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="modal-detail">
-
-                <small>
-                    Room
-                </small>
-
-                <strong id="modalRoom">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="modal-detail">
-
-                <small>
-                    Mode
-                </small>
-
-                <strong id="modalMode">
-                    —
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <div
-            class="modal-message"
-            id="modalMessage"
-        >
-            —
-        </div>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | Student Dashboard
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="student admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
+    </a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
+    </nav>
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
     </div>
-
-</div>
-
-
-<script>
-
-    /* =====================================================
-       MOBILE NAVIGATION
-    ====================================================== */
-
-    const menuButton =
-        document.getElementById("menuButton");
-
-    const navMenu =
-        document.getElementById("navMenu");
-
-
-    if (menuButton && navMenu) {
-
-        menuButton.addEventListener(
-            "click",
-            function () {
-
-                navMenu.classList.toggle("show");
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       DATE
-    ====================================================== */
-
-    const studentDate =
-        document.getElementById("studentDate");
-
-
-    const now =
-        new Date();
-
-
-    studentDate.textContent =
-        now.toLocaleDateString(
-            "en-GB",
-            {
-                weekday: "short",
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            }
-        );
-
-
-    /* =====================================================
-       LECTURE FILTERING
-    ====================================================== */
-
-    const filters =
-        document.querySelectorAll(
-            ".student-filter"
-        );
-
-
-    const lectures =
-        document.querySelectorAll(
-            ".student-lecture"
-        );
-
-
-    filters.forEach(
-        function(filterButton) {
-
-            filterButton.addEventListener(
-                "click",
-                function() {
-
-                    filters.forEach(
-                        function(button) {
-
-                            button.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    filterButton.classList.add(
-                        "active"
-                    );
-
-
-                    const selected =
-                        filterButton.dataset.filter;
-
-
-                    lectures.forEach(
-                        function(lecture) {
-
-                            const type =
-                                lecture.dataset.type;
-
-
-                            if (
-                                selected === "all" ||
-                                selected === type
-                            ) {
-
-                                lecture.style.display =
-                                    "grid";
-
-                            }
-                            else {
-
-                                lecture.style.display =
-                                    "none";
-
-                            }
-
-                        }
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       LECTURE DETAILS MODAL
-    ====================================================== */
-
-    const modal =
-        document.getElementById(
-            "lectureModal"
-        );
-
-
-    const modalClose =
-        document.getElementById(
-            "modalClose"
-        );
-
-
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-
-    const modalTime =
-        document.getElementById(
-            "modalTime"
-        );
-
-
-    const modalFaculty =
-        document.getElementById(
-            "modalFaculty"
-        );
-
-
-    const modalRoom =
-        document.getElementById(
-            "modalRoom"
-        );
-
-
-    const modalMode =
-        document.getElementById(
-            "modalMode"
-        );
-
-
-    const modalMessage =
-        document.getElementById(
-            "modalMessage"
-        );
-
-
-    lectures.forEach(
-        function(lecture) {
-
-            lecture.addEventListener(
-                "click",
-                function() {
-
-                    modalTitle.textContent =
-                        lecture.dataset.title;
-
-
-                    modalTime.textContent =
-                        lecture.dataset.time;
-
-
-                    modalFaculty.textContent =
-                        lecture.dataset.faculty;
-
-
-                    modalRoom.textContent =
-                        lecture.dataset.room;
-
-
-                    modalMode.textContent =
-                        lecture.dataset.mode;
-
-
-                    modalMessage.textContent =
-                        lecture.dataset.message;
-
-
-                    modal.classList.add(
-                        "show"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    modalClose.addEventListener(
-        "click",
-        function() {
-
-            modal.classList.remove(
-                "show"
-            );
-
-        }
-    );
-
-
-    modal.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === modal
-            ) {
-
-                modal.classList.remove(
-                    "show"
-                );
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       NOTIFICATION INTERACTION
-    ====================================================== */
-
-    const notifications =
-        document.querySelectorAll(
-            ".student-notification"
-        );
-
-
-    notifications.forEach(
-        function(notification) {
-
-            notification.addEventListener(
-                "click",
-                function() {
-
-                    const title =
-                        notification.querySelector(
-                            "h3"
-                        ).textContent;
-
-
-                    alert(
-                        title +
-                        "\n\nThis notification is connected to the student's academic schedule."
-                    );
-
-                }
-            );
-
-        }
-    );
-
-</script>
-
-
-</body>
-
+   </header>
+   <main class="dashboard-container">
+    <section class="welcome-section">
+     <div class="welcome-content">
+      <span class="section-label">
+       STUDENT DASHBOARD
+      </span>
+      <h1>
+       Welcome back,
+       <span>
+        Student
+       </span>
+      </h1>
+      <p>
+       Stay updated with your lectures, changes and alternate arrangements.
+      </p>
+     </div>
+     <div class="today-card">
+      <span>
+       Today
+      </span>
+      <strong id="currentDate">
+       18 Aug 2026
+      </strong>
+     </div>
+    </section>
+    <section class="quick-stats">
+     <div class="stat-card">
+      <div class="stat-icon">
+       📚
+      </div>
+      <div class="stat-content">
+       <span>
+        Today's Lectures
+       </span>
+       <strong>
+        5
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🕐
+      </div>
+      <div class="stat-content">
+       <span>
+        Next Lecture
+       </span>
+       <strong>
+        10:30 AM
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🔄
+      </div>
+      <div class="stat-content">
+       <span>
+        Alternate Lectures
+       </span>
+       <strong>
+        1
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🔔
+      </div>
+      <div class="stat-content">
+       <span>
+        Notifications
+       </span>
+       <strong>
+        3
+       </strong>
+      </div>
+     </div>
+    </section>
+    <section class="dashboard-grid">
+     <div class="dashboard-panel">
+      <div class="panel-heading">
+       <div>
+        <span class="section-label">
+         TODAY
+        </span>
+        <h2>
+         Lecture Schedule
+        </h2>
+       </div>
+       <span class="live-status">
+        ● LIVE
+       </span>
+      </div>
+      <div class="lecture-list">
+       <div class="lecture-card">
+        <div class="lecture-time">
+         <strong>
+          09:00
+         </strong>
+         <span>
+          10:00 AM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Data Structures
+         </h3>
+         <p>
+          Prof. Sharma
+         </p>
+         <span>
+          Room 204
+         </span>
+        </div>
+        <div class="lecture-status completed">
+         Completed
+        </div>
+       </div>
+       <div class="lecture-card current">
+        <div class="lecture-time">
+         <strong>
+          10:30
+         </strong>
+         <span>
+          11:30 AM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          SQL
+         </h3>
+         <p>
+          Prof. Mehta
+         </p>
+         <span>
+          Room 302
+         </span>
+        </div>
+        <div class="lecture-status current">
+         Current
+        </div>
+       </div>
+       <div class="lecture-card">
+        <div class="lecture-time">
+         <strong>
+          12:00
+         </strong>
+         <span>
+          01:00 PM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Computer Networks
+         </h3>
+         <p>
+          Prof. Patel
+         </p>
+         <span>
+          Room 201
+         </span>
+        </div>
+        <div class="lecture-status upcoming">
+         Upcoming
+        </div>
+       </div>
+       <div class="lecture-card alternate">
+        <div class="lecture-time">
+         <strong>
+          02:00
+         </strong>
+         <span>
+          03:00 PM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Artificial Intelligence
+         </h3>
+         <p>
+          Alternate Faculty Assigned
+         </p>
+         <span>
+          Online • Live
+         </span>
+        </div>
+        <div class="lecture-status alternate">
+         Alternate
+        </div>
+       </div>
+      </div>
+      <a class="primary-button" href="timetable.html">
+       View Full Timetable →
+      </a>
+     </div>
+     <div class="dashboard-panel">
+      <div class="panel-heading">
+       <div>
+        <span class="section-label">
+         UPDATES
+        </span>
+        <h2>
+         Notifications
+        </h2>
+       </div>
+       <span class="notification-count">
+        3
+       </span>
+      </div>
+      <div class="notification-list">
+       <div class="notification-card">
+        <div class="notification-icon">
+         ⚡
+        </div>
+        <div>
+         <h3>
+          Alternate Lecture Assigned
+         </h3>
+         <p>
+          AI lecture will be conducted by alternate faculty.
+         </p>
+         <span>
+          10 min ago
+         </span>
+        </div>
+       </div>
+       <div class="notification-card">
+        <div class="notification-icon">
+         🔔
+        </div>
+        <div>
+         <h3>
+          Lecture Timing Updated
+         </h3>
+         <p>
+          Computer Networks starts at 12:00 PM.
+         </p>
+         <span>
+          1 hour ago
+         </span>
+        </div>
+       </div>
+       <div class="notification-card">
+        <div class="notification-icon">
+         📢
+        </div>
+        <div>
+         <h3>
+          New Announcement
+         </h3>
+         <p>
+          Check today's updated schedule.
+         </p>
+         <span>
+          2 hours ago
+         </span>
+        </div>
+       </div>
+      </div>
+      <a class="secondary-button" href="notification.html">
+       View All Notifications
+      </a>
+     </div>
+    </section>
+    <section class="dashboard-panel attendance-preview">
+     <div class="panel-heading">
+      <div>
+       <span class="section-label">
+        ATTENDANCE
+       </span>
+       <h2>
+        My Attendance
+       </h2>
+      </div>
+      <a class="text-link" href="attendance.html">
+       View Details →
+      </a>
+     </div>
+     <div class="attendance-content">
+      <div class="attendance-circle">
+       <strong>
+        86%
+       </strong>
+       <span>
+        Overall
+       </span>
+      </div>
+      <div class="attendance-stats">
+       <div>
+        <strong>
+         18
+        </strong>
+        <span>
+         Present
+        </span>
+       </div>
+       <div>
+        <strong>
+         4
+        </strong>
+        <span>
+         Absent
+        </span>
+       </div>
+       <div>
+        <strong>
+         22
+        </strong>
+        <span>
+         Total Lectures
+        </span>
+       </div>
+      </div>
+     </div>
+     <p class="privacy-note">
+      You can view only your own attendance.
+     </p>
+    </section>
+    <section class="quick-actions">
+     <a class="action-card" href="timetable.html">
+      <span class="action-icon">
+       📅
+      </span>
+      <div>
+       <strong>
+        Full Timetable
+       </strong>
+       <small>
+        View your complete schedule
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="attendance.html">
+      <span class="action-icon">
+       📊
+      </span>
+      <div>
+       <strong>
+        Attendance
+       </strong>
+       <small>
+        Check your attendance
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="exam.html">
+      <span class="action-icon">
+       📝
+      </span>
+      <div>
+       <strong>
+        Exams
+       </strong>
+       <small>
+        View upcoming examinations
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="notification.html">
+      <span class="action-icon">
+       🔔
+      </span>
+      <div>
+       <strong>
+        Notifications
+       </strong>
+       <small>
+        View latest updates
+       </small>
+      </div>
+     </a>
+     <a class="action-card" data-role-only="faculty admin" href="faculty.html">
+      <span class="action-icon">
+       👨‍🏫
+      </span>
+      <div>
+       <strong>
+        Faculty
+       </strong>
+       <small>
+        View faculty information
+       </small>
+      </div>
+     </a>
+     <a class="action-card" data-role-only="admin" href="admin.html">
+      <span class="action-icon">
+       ⚙️
+      </span>
+      <div>
+       <strong>
+        Admin
+       </strong>
+       <small>
+        Portal administration
+       </small>
+      </div>
+     </a>
+    </section>
+    <section class="voice-assistant">
+     <div class="voice-icon">
+      ✦
+     </div>
+     <div class="voice-content">
+      <span>
+       alterED AI ASSISTANT
+      </span>
+      <h2>
+       Need help with your schedule?
+      </h2>
+      <p>
+       Ask me about your next lecture, timings, faculty or alternate arrangements.
+      </p>
+     </div>
+     <button class="voice-button" id="voiceAssistantButton" type="button">
+      Ask alterED AI
+      <span>
+       →
+      </span>
+     </button>
+    </section>
+    <div id="aiResponseBox" style="display:none;position:fixed;right:30px;bottom:30px;width:360px;max-width:calc(100% - 40px);padding:24px;background:#10002f;border:1px solid #a83cff;border-radius:18px;box-shadow:0 0 30px rgba(168,60,255,.35);z-index:9999;color:white">
+     <div style="font-size:12px;letter-spacing:3px;color:#c06cff;margin-bottom:8px">
+      ALTERED AI
+     </div>
+     <h3 id="aiResponseTitle" style="margin:0 0 10px;font-size:20px">
+      Hello Student!
+     </h3>
+     <p id="aiResponseText" style="margin:0;line-height:1.6;color:#d7c8ff">
+      How can I help you?
+     </p>
+     <button id="closeAI" style="margin-top:18px;padding:9px 18px;border:1px solid #a83cff;border-radius:10px;background:transparent;color:white;cursor:pointer" type="button">
+      Close
+     </button>
+    </div>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
 </html>
+

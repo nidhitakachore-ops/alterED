@@ -1,145 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>About | alterED</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-
-<body>
-
-    <header class="navbar">
-
-        <a href="index.html" class="brand">
-
-            <img
-                src="images/test 2.jpg"
-                alt="alterED Logo"
-                class="brand-logo"
-            >
-
-            <span class="brand-name">
-                alter<span>ED</span>
-            </span>
-
-        </a>
-
-
-        <nav class="nav-menu">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html" class="active">
-                About
-            </a>
-
-            <a href="photo.html">
-                Photo
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <a
-            href="login.html"
-            class="auth-nav-button"
-        >
-            <span class="user-icon">♟</span>
-            <span>Login / Register</span>
-        </a>
-
-
-        <button
-            class="menu-button"
-            onclick="toggleMenu()"
-        >
-            ☰
-        </button>
-
-    </header>
-
-
-    <main class="simple-page">
-
-        <p class="hero-small-title">
-            ABOUT ALTERED
-        </p>
-
-        <h1 class="simple-title">
-            Smart Education.
-            <span>Smarter Plan B.</span>
-        </h1>
-
-        <div class="neon-line"></div>
-
-        <p class="simple-description">
-
-            alterED is a Smart Lecture Monitoring &
-            Alternate Live Arrangement System designed
-            to keep learning uninterrupted when a faculty
-            member is unavailable.
-
-        </p>
-
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <h2>Lecture Monitoring</h2>
-                <p>
-                    Monitor scheduled lectures and faculty
-                    availability.
-                </p>
-            </div>
-
-
-            <div class="feature-card">
-                <h2>Smart Substitute</h2>
-                <p>
-                    Find and assign suitable alternate faculty.
-                </p>
-            </div>
-
-
-            <div class="feature-card">
-                <h2>Live Arrangement</h2>
-                <p>
-                    Provide alternate live lectures when required.
-                </p>
-            </div>
-
-
-            <div class="feature-card">
-                <h2>Instant Notification</h2>
-                <p>
-                    Keep students and faculty updated instantly.
-                </p>
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <script src="js/script.js"></script>
-
-</body>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | About
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="student faculty admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
+    </a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
+    </nav>
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
+    </div>
+   </header>
+   <main class="page-shell">
+    <span class="section-label">
+     ABOUT THE PLATFORM
+    </span>
+    <h1 class="page-title">
+     About
+     <span>
+      alterED
+     </span>
+    </h1>
+    <p class="page-subtitle">
+     alterED is designed as a smart, connected academic portal that brings everyday student information into one place.
+    </p>
+    <div class="content-grid">
+     <div class="data-card">
+      <h2>
+       Smart
+      </h2>
+      <p>
+       Quick access to schedules, attendance, exams and notifications.
+      </p>
+     </div>
+     <div class="data-card">
+      <h2>
+       Connected
+      </h2>
+      <p>
+       Common navigation keeps every academic section linked from the same portal.
+      </p>
+     </div>
+     <div class="data-card full-card">
+      <h2>
+       Portal Sections
+      </h2>
+      <p>
+       Home, Dashboard, Timetable, Attendance, Notifications, Exams, Faculty, Admin and About are connected through the shared navigation.
+      </p>
+     </div>
+    </div>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
 </html>
+
