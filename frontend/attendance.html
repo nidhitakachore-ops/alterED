@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | Attendance
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="student admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
+    </a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
+    </nav>
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
+    </div>
+   </header>
+   <main class="page-shell">
+    <span class="section-label">
+     PERSONAL RECORD
+    </span>
+    <h1 class="page-title">
+     My
+     <span>
+      Attendance
+     </span>
+    </h1>
+    <p class="page-subtitle">
+     Only your personal attendance is displayed in the student portal.
+    </p>
+    <div class="content-grid">
+     <div class="data-card">
+      <div class="attendance-content">
+       <div class="attendance-circle">
+        <strong>
+         86%
+        </strong>
+        <span>
+         Overall
+        </span>
+       </div>
+       <div class="attendance-stats">
+        <div>
+         <strong>
+          18
+         </strong>
+         <span>
+          Present
+         </span>
+        </div>
+        <div>
+         <strong>
+          4
+         </strong>
+         <span>
+          Absent
+         </span>
+        </div>
+        <div>
+         <strong>
+          22
+         </strong>
+         <span>
+          Total Classes
+         </span>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="data-card">
+      <h2>
+       QR Attendance
+      </h2>
+      <p>
+       Scan the faculty-generated classroom QR code to mark your attendance. The backend can validate the session and update your record.
+      </p>
+      <button class="voice-button" id="qrButton" type="button">
+       Open QR Scanner
+      </button>
+      <p class="notice" id="qrMessage">
+      </p>
+     </div>
+     <div class="data-card full-card">
+      <h2>
+       Subject-wise Attendance
+      </h2>
+      <table class="data-table">
+       <thead>
+        <tr>
+         <th>
+          Subject
+         </th>
+         <th>
+          Present
+         </th>
+         <th>
+          Absent
+         </th>
+         <th>
+          Attendance
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Data Structures
+         </td>
+         <td>
+          4
+         </td>
+         <td>
+          1
+         </td>
+         <td>
+          80%
+         </td>
+        </tr>
+        <tr>
+         <td>
+          SQL
+         </td>
+         <td>
+          4
+         </td>
+         <td>
+          0
+         </td>
+         <td>
+          100%
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Computer Networks
+         </td>
+         <td>
+          3
+         </td>
+         <td>
+          1
+         </td>
+         <td>
+          75%
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Database Management
+         </td>
+         <td>
+          4
+         </td>
+         <td>
+          1
+         </td>
+         <td>
+          80%
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Artificial Intelligence
+         </td>
+         <td>
+          3
+         </td>
+         <td>
+          1
+         </td>
+         <td>
+          75%
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
+</html>
+

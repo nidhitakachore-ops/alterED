@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | Timetable
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="student faculty admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
+    </a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
+    </nav>
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
+    </div>
+   </header>
+   <main class="page-shell">
+    <span class="section-label">
+     ACADEMIC SCHEDULE
+    </span>
+    <h1 class="page-title">
+     Class
+     <span>
+      Timetable
+     </span>
+    </h1>
+    <p class="page-subtitle">
+     Your current lecture schedule, rooms and faculty arrangements.
+    </p>
+    <div class="data-card full-card">
+     <table class="data-table">
+      <thead>
+       <tr>
+        <th>
+         Time
+        </th>
+        <th>
+         Subject
+        </th>
+        <th>
+         Faculty
+        </th>
+        <th>
+         Room
+        </th>
+        <th>
+         Status
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td>
+         09:00–10:00
+        </td>
+        <td>
+         Data Structures
+        </td>
+        <td>
+         Prof. Sharma
+        </td>
+        <td>
+         204
+        </td>
+        <td>
+         <span class="badge">
+          Completed
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         10:30–11:30
+        </td>
+        <td>
+         SQL
+        </td>
+        <td>
+         Prof. Mehta
+        </td>
+        <td>
+         302
+        </td>
+        <td>
+         <span class="badge">
+          Current
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         12:00–01:00
+        </td>
+        <td>
+         Computer Networks
+        </td>
+        <td>
+         Prof. Patel
+        </td>
+        <td>
+         201
+        </td>
+        <td>
+         <span class="badge">
+          Upcoming
+         </span>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         02:00–03:00
+        </td>
+        <td>
+         Artificial Intelligence
+        </td>
+        <td>
+         Alternate Faculty
+        </td>
+        <td>
+         Online • Live
+        </td>
+        <td>
+         <span class="badge">
+          Alternate
+         </span>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
+</html>
+

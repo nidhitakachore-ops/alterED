@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+  <title>
+   alterED | Student Dashboard
+  </title>
+ </head>
+ <body>
+  <div class="student-page role-page" data-allowed-roles="student admin">
+   <header class="dashboard-navbar">
+    <a aria-label="alterED home" class="brand" href="index.html">
+     <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
+     <div class="brand-name">
+      alter
+      <span>
+       ED
+      </span>
+     </div>
+    </a>
+    <nav aria-label="Primary navigation" class="dashboard-nav">
+     <a class="nav-link" data-page="index.html" data-roles="student faculty admin" href="index.html">
+      Home
+     </a>
+     <a class="nav-link" data-page="student.html" data-roles="student" href="student.html">
+      Dashboard
+     </a>
+     <a class="nav-link" data-page="timetable.html" data-roles="student faculty admin" href="timetable.html">
+      Timetable
+     </a>
+     <a class="nav-link" data-page="attendance.html" data-roles="student" href="attendance.html">
+      Attendance
+     </a>
+     <a class="nav-link" data-page="notification.html" data-roles="student faculty admin" href="notification.html">
+      Notifications
+     </a>
+     <a class="nav-link" data-page="exam.html" data-roles="student faculty admin" href="exam.html">
+      Exams
+     </a>
+     <a class="nav-link" data-page="faculty.html" data-roles="faculty admin" href="faculty.html">
+      Faculty
+     </a>
+     <a class="nav-link" data-page="admin.html" data-roles="admin" href="admin.html">
+      Admin
+     </a>
+     <a class="nav-link" data-page="about.html" data-roles="student faculty admin" href="about.html">
+      About
+     </a>
+    </nav>
+    <div class="student-profile">
+     <div aria-hidden="true" class="profile-circle">
+      ♙
+     </div>
+     <div class="profile-info">
+      <strong id="profileRole">
+       Student
+      </strong>
+      <span id="profileScope">
+       Student Portal
+      </span>
+     </div>
+     <button aria-label="Logout" class="logout-button" id="logoutButton" type="button">
+      Logout
+     </button>
+    </div>
+   </header>
+   <main class="dashboard-container">
+    <section class="welcome-section">
+     <div class="welcome-content">
+      <span class="section-label">
+       STUDENT DASHBOARD
+      </span>
+      <h1>
+       Welcome back,
+       <span>
+        Student
+       </span>
+      </h1>
+      <p>
+       Stay updated with your lectures, changes and alternate arrangements.
+      </p>
+     </div>
+     <div class="today-card">
+      <span>
+       Today
+      </span>
+      <strong id="currentDate">
+       18 Aug 2026
+      </strong>
+     </div>
+    </section>
+    <section class="quick-stats">
+     <div class="stat-card">
+      <div class="stat-icon">
+       📚
+      </div>
+      <div class="stat-content">
+       <span>
+        Today's Lectures
+       </span>
+       <strong>
+        5
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🕐
+      </div>
+      <div class="stat-content">
+       <span>
+        Next Lecture
+       </span>
+       <strong>
+        10:30 AM
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🔄
+      </div>
+      <div class="stat-content">
+       <span>
+        Alternate Lectures
+       </span>
+       <strong>
+        1
+       </strong>
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       🔔
+      </div>
+      <div class="stat-content">
+       <span>
+        Notifications
+       </span>
+       <strong>
+        3
+       </strong>
+      </div>
+     </div>
+    </section>
+    <section class="dashboard-grid">
+     <div class="dashboard-panel">
+      <div class="panel-heading">
+       <div>
+        <span class="section-label">
+         TODAY
+        </span>
+        <h2>
+         Lecture Schedule
+        </h2>
+       </div>
+       <span class="live-status">
+        ● LIVE
+       </span>
+      </div>
+      <div class="lecture-list">
+       <div class="lecture-card">
+        <div class="lecture-time">
+         <strong>
+          09:00
+         </strong>
+         <span>
+          10:00 AM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Data Structures
+         </h3>
+         <p>
+          Prof. Sharma
+         </p>
+         <span>
+          Room 204
+         </span>
+        </div>
+        <div class="lecture-status completed">
+         Completed
+        </div>
+       </div>
+       <div class="lecture-card current">
+        <div class="lecture-time">
+         <strong>
+          10:30
+         </strong>
+         <span>
+          11:30 AM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          SQL
+         </h3>
+         <p>
+          Prof. Mehta
+         </p>
+         <span>
+          Room 302
+         </span>
+        </div>
+        <div class="lecture-status current">
+         Current
+        </div>
+       </div>
+       <div class="lecture-card">
+        <div class="lecture-time">
+         <strong>
+          12:00
+         </strong>
+         <span>
+          01:00 PM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Computer Networks
+         </h3>
+         <p>
+          Prof. Patel
+         </p>
+         <span>
+          Room 201
+         </span>
+        </div>
+        <div class="lecture-status upcoming">
+         Upcoming
+        </div>
+       </div>
+       <div class="lecture-card alternate">
+        <div class="lecture-time">
+         <strong>
+          02:00
+         </strong>
+         <span>
+          03:00 PM
+         </span>
+        </div>
+        <div class="lecture-details">
+         <h3>
+          Artificial Intelligence
+         </h3>
+         <p>
+          Alternate Faculty Assigned
+         </p>
+         <span>
+          Online • Live
+         </span>
+        </div>
+        <div class="lecture-status alternate">
+         Alternate
+        </div>
+       </div>
+      </div>
+      <a class="primary-button" href="timetable.html">
+       View Full Timetable →
+      </a>
+     </div>
+     <div class="dashboard-panel">
+      <div class="panel-heading">
+       <div>
+        <span class="section-label">
+         UPDATES
+        </span>
+        <h2>
+         Notifications
+        </h2>
+       </div>
+       <span class="notification-count">
+        3
+       </span>
+      </div>
+      <div class="notification-list">
+       <div class="notification-card">
+        <div class="notification-icon">
+         ⚡
+        </div>
+        <div>
+         <h3>
+          Alternate Lecture Assigned
+         </h3>
+         <p>
+          AI lecture will be conducted by alternate faculty.
+         </p>
+         <span>
+          10 min ago
+         </span>
+        </div>
+       </div>
+       <div class="notification-card">
+        <div class="notification-icon">
+         🔔
+        </div>
+        <div>
+         <h3>
+          Lecture Timing Updated
+         </h3>
+         <p>
+          Computer Networks starts at 12:00 PM.
+         </p>
+         <span>
+          1 hour ago
+         </span>
+        </div>
+       </div>
+       <div class="notification-card">
+        <div class="notification-icon">
+         📢
+        </div>
+        <div>
+         <h3>
+          New Announcement
+         </h3>
+         <p>
+          Check today's updated schedule.
+         </p>
+         <span>
+          2 hours ago
+         </span>
+        </div>
+       </div>
+      </div>
+      <a class="secondary-button" href="notification.html">
+       View All Notifications
+      </a>
+     </div>
+    </section>
+    <section class="dashboard-panel attendance-preview">
+     <div class="panel-heading">
+      <div>
+       <span class="section-label">
+        ATTENDANCE
+       </span>
+       <h2>
+        My Attendance
+       </h2>
+      </div>
+      <a class="text-link" href="attendance.html">
+       View Details →
+      </a>
+     </div>
+     <div class="attendance-content">
+      <div class="attendance-circle">
+       <strong>
+        86%
+       </strong>
+       <span>
+        Overall
+       </span>
+      </div>
+      <div class="attendance-stats">
+       <div>
+        <strong>
+         18
+        </strong>
+        <span>
+         Present
+        </span>
+       </div>
+       <div>
+        <strong>
+         4
+        </strong>
+        <span>
+         Absent
+        </span>
+       </div>
+       <div>
+        <strong>
+         22
+        </strong>
+        <span>
+         Total Lectures
+        </span>
+       </div>
+      </div>
+     </div>
+     <p class="privacy-note">
+      You can view only your own attendance.
+     </p>
+    </section>
+    <section class="quick-actions">
+     <a class="action-card" href="timetable.html">
+      <span class="action-icon">
+       📅
+      </span>
+      <div>
+       <strong>
+        Full Timetable
+       </strong>
+       <small>
+        View your complete schedule
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="attendance.html">
+      <span class="action-icon">
+       📊
+      </span>
+      <div>
+       <strong>
+        Attendance
+       </strong>
+       <small>
+        Check your attendance
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="exam.html">
+      <span class="action-icon">
+       📝
+      </span>
+      <div>
+       <strong>
+        Exams
+       </strong>
+       <small>
+        View upcoming examinations
+       </small>
+      </div>
+     </a>
+     <a class="action-card" href="notification.html">
+      <span class="action-icon">
+       🔔
+      </span>
+      <div>
+       <strong>
+        Notifications
+       </strong>
+       <small>
+        View latest updates
+       </small>
+      </div>
+     </a>
+     <a class="action-card" data-role-only="faculty admin" href="faculty.html">
+      <span class="action-icon">
+       👨‍🏫
+      </span>
+      <div>
+       <strong>
+        Faculty
+       </strong>
+       <small>
+        View faculty information
+       </small>
+      </div>
+     </a>
+     <a class="action-card" data-role-only="admin" href="admin.html">
+      <span class="action-icon">
+       ⚙️
+      </span>
+      <div>
+       <strong>
+        Admin
+       </strong>
+       <small>
+        Portal administration
+       </small>
+      </div>
+     </a>
+    </section>
+    <section class="voice-assistant">
+     <div class="voice-icon">
+      ✦
+     </div>
+     <div class="voice-content">
+      <span>
+       alterED AI ASSISTANT
+      </span>
+      <h2>
+       Need help with your schedule?
+      </h2>
+      <p>
+       Ask me about your next lecture, timings, faculty or alternate arrangements.
+      </p>
+     </div>
+     <button class="voice-button" id="voiceAssistantButton" type="button">
+      Ask alterED AI
+      <span>
+       →
+      </span>
+     </button>
+    </section>
+    <div id="aiResponseBox" style="display:none;position:fixed;right:30px;bottom:30px;width:360px;max-width:calc(100% - 40px);padding:24px;background:#10002f;border:1px solid #a83cff;border-radius:18px;box-shadow:0 0 30px rgba(168,60,255,.35);z-index:9999;color:white">
+     <div style="font-size:12px;letter-spacing:3px;color:#c06cff;margin-bottom:8px">
+      ALTERED AI
+     </div>
+     <h3 id="aiResponseTitle" style="margin:0 0 10px;font-size:20px">
+      Hello Student!
+     </h3>
+     <p id="aiResponseText" style="margin:0;line-height:1.6;color:#d7c8ff">
+      How can I help you?
+     </p>
+     <button id="closeAI" style="margin-top:18px;padding:9px 18px;border:1px solid #a83cff;border-radius:10px;background:transparent;color:white;cursor:pointer" type="button">
+      Close
+     </button>
+    </div>
+   </main>
+   <footer class="dashboard-footer">
+    ✦ alterED — Smart. Connected. Efficient.
+   </footer>
+  </div>
+ </body>
+</html>
+

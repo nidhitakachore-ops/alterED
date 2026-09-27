@@ -7,11 +7,11 @@
   <script defer="" src="script.js">
   </script>
   <title>
-   alterED | Home
+   alterED | Register
   </title>
  </head>
  <body>
-  <div class="student-page role-page" data-allowed-roles="student faculty admin">
+  <div class="student-page role-page auth-page" data-allowed-roles="student faculty admin">
    <header class="dashboard-navbar">
     <a aria-label="alterED home" class="brand" href="index.html">
      <img alt="alterED Logo" class="brand-logo" src="logo.jfif"/>
@@ -69,41 +69,44 @@
     </div>
    </header>
    <main class="page-shell">
-    <span class="section-label">
-     SMART ACADEMIC PORTAL
-    </span>
-    <h1 class="page-title">
-     Welcome to
-     <span>
-      alterED
+    <div class="data-card form-card">
+     <span class="section-label">
+      NEW ACCOUNT
      </span>
-    </h1>
-    <p class="page-subtitle">
-     A connected academic portal for schedules, attendance, examinations, notifications and role-based coordination.
-    </p>
-    <div class="content-grid">
-     <div class="data-card">
-      <h2>
-       Student Portal
-      </h2>
-      <p>
-       Open your dashboard to see today's lectures, notifications, attendance and quick actions.
+     <h1 class="page-title" style="font-size:38px">
+      Create
+      <span>
+       Account
+      </span>
+     </h1>
+     <form id="registerForm">
+      <div class="auth-input">
+       <span>
+        ♙
+       </span>
+       <input placeholder="Full name" required="" type="text"/>
+      </div>
+      <div class="auth-input">
+       <span>
+        ✉
+       </span>
+       <input placeholder="Email address" required="" type="email"/>
+      </div>
+      <div class="auth-input">
+       <span>
+        ⌑
+       </span>
+       <input placeholder="Password" required="" type="password"/>
+      </div>
+      <button class="auth-submit" type="submit">
+       Register
+      </button>
+      <p class="notice" id="registerMessage">
       </p>
-      <a class="primary-button" href="student.html">
-       Open Dashboard →
-      </a>
-     </div>
-     <div class="data-card">
-      <h2>
-       Academic Tools
-      </h2>
-      <p>
-       Move directly to your timetable, attendance, exams or notifications using the links below.
-      </p>
-      <a class="secondary-button" href="timetable.html">
-       View Timetable →
-      </a>
-     </div>
+     </form>
+     <a class="secondary-button" href="login.html">
+      Back to Login
+     </a>
     </div>
    </main>
    <footer class="dashboard-footer">
