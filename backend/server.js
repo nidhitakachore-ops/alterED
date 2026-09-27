@@ -6,9 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/",(req,res) => {
+app.get("/", (req, res) => {
     res.send("AlterED Backend is Running!");
-})
+});
 
 app.get("/api/test", (req, res) => {
     res.json({
@@ -29,8 +29,20 @@ app.post("/api/register", (req, res) => {
     });
 });
 
+app.post("/api/login", (req, res) => {
+    const { email, password, role } = req.body;
+
+    res.json({
+        message: "Login request received!",
+        user: {
+            email,
+            role
+        }
+    });
+});
+
 const PORT = 5000;
 
-app.listen(PORT,() => {
+app.listen(PORT, () => {
     console.log("Server running on port " + PORT);
-})
+});
